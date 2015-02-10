@@ -13,6 +13,7 @@
 		6837F7541A88B62C00C9F691 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6837F7531A88B62C00C9F691 /* Images.xcassets */; };
 		6837F7571A88B62C00C9F691 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6837F7551A88B62C00C9F691 /* LaunchScreen.xib */; };
 		6837F7631A88B62C00C9F691 /* gtbTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6837F7621A88B62C00C9F691 /* gtbTests.swift */; };
+		6899D8B31A89EF7B00BE2E55 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 6899D8AD1A89EF0400BE2E55 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,7 +24,42 @@
 			remoteGlobalIDString = 6837F7461A88B62B00C9F691;
 			remoteInfo = gtb;
 		};
+		6899D8AC1A89EF0400BE2E55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6899D8A71A89EF0400BE2E55 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27AB60071A7FAFBF0069F786;
+			remoteInfo = Alamofire;
+		};
+		6899D8AE1A89EF0400BE2E55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6899D8A71A89EF0400BE2E55 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 27AB60121A7FAFBF0069F786;
+			remoteInfo = AlamofireTests;
+		};
+		6899D8B01A89EF3A00BE2E55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6899D8A71A89EF0400BE2E55 /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 27AB60061A7FAFBF0069F786;
+			remoteInfo = Alamofire;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6899D8B21A89EF3F00BE2E55 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6899D8B31A89EF7B00BE2E55 /* Alamofire.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6837F7471A88B62B00C9F691 /* gtb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gtb.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +72,7 @@
 		6837F75C1A88B62C00C9F691 /* gtbTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gtbTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6837F7611A88B62C00C9F691 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6837F7621A88B62C00C9F691 /* gtbTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gtbTests.swift; sourceTree = "<group>"; };
+		6899D8A71A89EF0400BE2E55 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +114,7 @@
 		6837F7491A88B62B00C9F691 /* gtb */ = {
 			isa = PBXGroup;
 			children = (
+				6899D8A71A89EF0400BE2E55 /* Alamofire.xcodeproj */,
 				6837F74C1A88B62B00C9F691 /* AppDelegate.swift */,
 				6837F74E1A88B62B00C9F691 /* ViewController.swift */,
 				6837F7501A88B62C00C9F691 /* Main.storyboard */,
@@ -112,6 +150,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		6899D8A81A89EF0400BE2E55 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6899D8AD1A89EF0400BE2E55 /* Alamofire.framework */,
+				6899D8AF1A89EF0400BE2E55 /* AlamofireTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,10 +169,12 @@
 				6837F7431A88B62B00C9F691 /* Sources */,
 				6837F7441A88B62B00C9F691 /* Frameworks */,
 				6837F7451A88B62B00C9F691 /* Resources */,
+				6899D8B21A89EF3F00BE2E55 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6899D8B11A89EF3A00BE2E55 /* PBXTargetDependency */,
 			);
 			name = gtb;
 			productName = gtb;
@@ -179,6 +228,12 @@
 			mainGroup = 6837F73E1A88B62B00C9F691;
 			productRefGroup = 6837F7481A88B62B00C9F691 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6899D8A81A89EF0400BE2E55 /* Products */;
+					ProjectRef = 6899D8A71A89EF0400BE2E55 /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				6837F7461A88B62B00C9F691 /* gtb */,
@@ -186,6 +241,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		6899D8AD1A89EF0400BE2E55 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 6899D8AC1A89EF0400BE2E55 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		6899D8AF1A89EF0400BE2E55 /* AlamofireTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AlamofireTests.xctest;
+			remoteRef = 6899D8AE1A89EF0400BE2E55 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6837F7451A88B62B00C9F691 /* Resources */ = {
@@ -232,6 +304,11 @@
 			isa = PBXTargetDependency;
 			target = 6837F7461A88B62B00C9F691 /* gtb */;
 			targetProxy = 6837F75D1A88B62C00C9F691 /* PBXContainerItemProxy */;
+		};
+		6899D8B11A89EF3A00BE2E55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Alamofire;
+			targetProxy = 6899D8B01A89EF3A00BE2E55 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -407,6 +484,7 @@
 				6837F7681A88B62C00C9F691 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6837F7691A88B62C00C9F691 /* Build configuration list for PBXNativeTarget "gtbTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +493,7 @@
 				6837F76B1A88B62C00C9F691 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let params =
+        ["id": 1111,
+         "passwd": 1234
+        ]
+        
+        Alamofire.request(.POST,"http://localhost/",parameters: params,encoding: .JSON)
+        
     }
 
     override func didReceiveMemoryWarning() {
