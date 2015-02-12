@@ -11,14 +11,22 @@ import Alamofire
 
 class ViewController: UIViewController,UITextFieldDelegate {
     
-    var myButtonNext: UIButton!
-    var myButtonNext2: UIButton!
+    let myButtonLogin = UIButton()
+    let myButtonSignup = UIButton()
+    
+    var _indicator: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.jpg")!)
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.jpg")!)
+        
+        let myImage = UIImage(named: "background.jpg")!
+        var myImageView = UIImageView()
+        myImageView.image = myImage
+        myImageView.frame = CGRectMake(0, 0, myImage.size.width, myImage.size.height)
+        self.view.addSubview(myImageView)
         
         // Label id
         let myLabel: UILabel = UILabel(frame: CGRectMake(0,0,200,50))
@@ -75,40 +83,48 @@ class ViewController: UIViewController,UITextFieldDelegate {
         // ボタンの生成する.
         //Login
         
-        myButtonNext = UIButton(frame: CGRectMake(0,0,120,40))
-        myButtonNext.backgroundColor = UIColor.redColor();
-        myButtonNext.layer.masksToBounds = true
-        myButtonNext.setTitle("Login", forState: .Normal)
-        myButtonNext.layer.cornerRadius = 5.0
-        myButtonNext.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-250)
-        myButtonNext.addTarget(self, action: "onClickMyButton:", forControlEvents: .TouchUpInside)
+        myButtonLogin.frame = CGRectMake(0,0,120,40)
+        myButtonLogin.backgroundColor = UIColor.redColor();
+        myButtonLogin.layer.masksToBounds = true
+        myButtonLogin.setTitle("Login", forState: .Normal)
+        myButtonLogin.layer.cornerRadius = 5.0
+        myButtonLogin.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-250)
+        myButtonLogin.addTarget(self, action: "onClickMyButton:", forControlEvents: .TouchUpInside)
         
         //SignUp
         
-        myButtonNext2 = UIButton(frame: CGRectMake(0,0,120,40))
-        myButtonNext2.backgroundColor = UIColor.greenColor();
-        myButtonNext2.layer.masksToBounds = true
-        myButtonNext2.setTitle("SignUp", forState: .Normal)
-        myButtonNext2.layer.cornerRadius = 5.0
-        myButtonNext2.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-160)
-        myButtonNext2.addTarget(self, action: "onClickMyButton:", forControlEvents: .TouchUpInside)
+        myButtonSignup.frame = CGRectMake(0,0,120,40)
+        myButtonSignup.backgroundColor = UIColor.greenColor();
+        myButtonSignup.layer.masksToBounds = true
+        myButtonSignup.setTitle("SignUp", forState: .Normal)
+        myButtonSignup.layer.cornerRadius = 5.0
+        myButtonSignup.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-160)
+        myButtonSignup.addTarget(self, action: "onClickMyButton:", forControlEvents: .TouchUpInside)
         
         
         // ボタンを追加する.
-        self.view.addSubview(myButtonNext);
-        self.view.addSubview(myButtonNext2);
+        self.view.addSubview(myButtonLogin);
+        self.view.addSubview(myButtonSignup);
         
         
         
         
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
     func onClickMyButton(sender: UIButton){
+        
+        if sender == myButtonLogin {
+            
+        _indicator?.startAnimating()
         
         //http通信
         
@@ -122,13 +138,30 @@ class ViewController: UIViewController,UITextFieldDelegate {
         Alamofire.request(.POST,"http://localhost/",parameters: params,encoding: .JSON)
         
         // 遷移するViewを定義する.
-        let mySecondViewController: UIViewController = SecondViewController()
+        let mainViewController: UIViewController = MainViewController()
         
         // アニメーションを設定する.
-        mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        mainViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
         
         // Viewの移動する.
-        self.presentViewController(mySecondViewController, animated: true, completion: nil)
+        self.presentViewController(mainViewController, animated: true, completion: nil)
+            
+            NSUserDefaults.standardUserDefaults().setObject("woooooo",forKey:"uid_gtb")
+
+            
+        _indicator?.stopAnimating()
+        
+        } else if sender == myButtonSignup {
+        
+            let signupViewController: UIViewController = SignupViewController()
+            
+            signupViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+            
+            self.presentViewController(signupViewController, animated: true, completion: nil)
+        
+        
+        }
+        
         
     }
     

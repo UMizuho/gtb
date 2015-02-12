@@ -13,21 +13,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        // ViewControllerを生成する.
-        let myFirstViewController: ViewController = ViewController()
+        var uid = NSUserDefaults.standardUserDefaults().stringForKey("uid_gtb")
         
-        // UIWindowを生成する.
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        if((uid) != nil){
+            
+            let mainViewController: MainViewController = MainViewController()
+            
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            
+            self.window?.rootViewController = mainViewController
+            
+            self.window?.makeKeyAndVisible()
+            
+            return true
+
+        }else{
+            
+            let myFirstViewController: ViewController = ViewController()
+            
+            self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                        
+            self.window?.rootViewController = myFirstViewController
+            
+            self.window?.makeKeyAndVisible()
+            
+            return true
+
+        }
         
-        // rootViewControllerにNatigationControllerを設定する.
-        self.window?.rootViewController = myFirstViewController
-        
-        self.window?.makeKeyAndVisible()
-        return true
     }
 
     func applicationWillResignActive(application: UIApplication) {
